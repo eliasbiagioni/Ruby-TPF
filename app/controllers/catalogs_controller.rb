@@ -73,7 +73,7 @@ class CatalogsController < ApplicationController
     search = params[:search].present? ? params[:search] : '*'
     @recordType = params[:recordType].present? ? params[:recordType] : 'Movie'
     response = Object.const_get(@recordType).pagy_search(search).records
-    @pagy, @contents = pagy_elasticsearch_rails(response, items: ENV['TABLE_PAGINATION_ITEMS'])
+    @pagy, @contents = pagy_elasticsearch_rails(response, items: ENV['TABLE_PAGINATION_ITEMS'].to_i)
     respond_to do |format|
       format.html { render :add_content }
     end

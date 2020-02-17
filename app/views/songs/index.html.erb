@@ -13,6 +13,9 @@
 <% content_for :content do %>
   <h2>Canciones</h2>
   
+  <% if @songs.empty? %>
+    <div class="alert alert-info">No hay canciones aún.</div>
+  <% else %>
   <table class="table">
     <thead class="black white-text">
       <tr>
@@ -41,4 +44,6 @@
     </tbody>
   </table>
 
+  <% end %>
+  
 <% end %>
