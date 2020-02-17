@@ -1,0 +1,14 @@
+<%= simple_form_for @music_disc, html: { class: 'text-center border border-light p-5' }  do | f | %>
+  <p class="h4 mb-4">Disco musical</p>
+  <%= f.input :title, label: 'Titulo', error: 'Ingrese el nombre del disco.' %>
+  <%= f.association :music_categories, label: 'Estilo musical', as: :select, error: 'Selecciona, al menos, una categoria' %>
+  <%= f.input :group_name, label: 'Grupo', error: 'Ingrese el nombre del grupo.' %>
+  <%= f.input :discography, label: 'Discografica', error: 'Ingrese la discografica.' %>
+  <%= f.input :image, label: 'Selecciona una imagen', error: 'Selecciona una imagen' %>
+  
+  <% if @music_disc.new_record? %>
+    <%= f.button :submit, 'Guardar', class: 'btn-catalog'%>
+  <% else %>
+    <%= f.button :submit, 'Guardar', class: 'btn-catalog',data: { confirm: 'Atencion! Si saco algun estilo musical, las canciones del disco asociadas a dicho estilo, seran eliminadas del disco. Desea continuar?' }  %>
+  <% end %>
+<% end %>

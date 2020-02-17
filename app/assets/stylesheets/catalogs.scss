@@ -1,0 +1,78 @@
+// Place all the styles related to the Catalogs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-catalog{
+    background-color: #f0ad4e !important;
+    color: #fff !important;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 0px;
+  }
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 0px;
+}
+
+.catalog_image_show{
+  margin-left: -10%;
+  width: 250px;
+  height: 300px
+}
+
+.image-container {
+    position: relative;
+    color: white;
+    display: inline-block;
+  }
+
+li:hover{
+  border-width: 20px !important;
+  border-color: black !important;
+}
+
+
+.image-text-container{
+  color: white;
+  min-width: 110px;
+  min-height: 10px;
+  max-width: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.image-category-container{
+  color: white;
+  min-width: 110px;
+  min-height: 10px;
+  max-width: 200px;
+  background-color: rgba(100, 0, 0, 0.5);
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.single-catalog-container{
+  margin-bottom: 10px;
+  margin-left: 0%;
+}
+
+.single-catalog{
+  margin-left: 2%;
+}
+
+.catalog-title{
+  text-transform: uppercase;
+  font-size: 200%;
+  
+}
+
+li.page-item.active > a{
+  background-color: #f0ad4e !important;
+}
+

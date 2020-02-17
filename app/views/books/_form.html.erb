@@ -1,0 +1,13 @@
+<%= simple_form_for @book, html: { class: 'text-center border border-light p-5' }  do | f | %>
+  <p class="h4 mb-4">Nuevo libro</p>
+  <%= f.input :title, label: 'Titulo', error: 'Ingrese el titulo del libro.' %>
+  <%= f.association :book_categories, label: 'Categoria', as: :select, error: 'Selecciona, al menos, una categoria' %>
+  <%= f.input :isbn, label: 'ISBN', error: 'Ingrese el isbn del libro.' %>
+  <%= f.input :author, label: 'Autor', error: 'Ingrese el autor del libro.' %>
+  <%= f.input :editorial, label: 'Editorial', error: 'Ingrese la editorial.' %>
+  <%= f.input :summary, label: 'Resumen', error: 'Ingrese el resumen del libro.' %>
+  <%= f.input :image, label: 'Selecciona una imagen', error: 'Selecciona una imagen' %>
+
+  <%= f.button :submit, 'Guardar', class: 'btn-catalog' %>
+<% end %>
+

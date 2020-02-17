@@ -1,0 +1,110 @@
+<% content_for :css do %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<% end %>
+
+<% content_for :sidebar do %>
+  <div id="sidebar" role="navigation">
+    <div class="jumbotron">
+      <h3>Catalogo</h3>
+      <% if can? :update, @catalog %>   
+        <div class="list-group">
+              <%= link_to "Agregar contenido", add_content_url, class: "list-group-item"%>
+              <%= link_to "Editar catalogo", edit_catalog_path(@catalog), class: "list-group-item"%>
+              <%= link_to "Eliminar catalogo", new_catalog_path, class: "list-group-item"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :content do %>
+<div>
+  <div class="container jumbotron single-catalog-container"> 
+      <div style="margin-left: -15px !important">
+          <p class="catalog-title">
+              <%= @catalog.name %>
+          </p>
+      </div>
+    <div class="row">
+
+
+      <%= image_tag(@catalog.image, width: 300, height: 400) %>
+      <div class="single-catalog">
+  
+        <div class="d-flex">
+          <div><i class="material-icons">label_outline</i></div>
+          <div><%= @catalog.catalog_category.name %></div>
+        </div>
+  
+        <div class="d-flex">
+          <% if @catalog.privacy %>
+            <div><i class="material-icons" style="color: red">lock_outline</i></div>
+            <div>Privado</div>
+          <% else %>
+            <div><i class="material-icons" style="color: green">lock_open</i></div>
+            <div>Público</div>
+          <% end %>
+        </p>
+
+      </div>
+      <% if !@catalog.privacy %>
+          <div class="d-flex">
+            Valoración: <%= rating_for @catalog, "content", disable_after_rate: true, cancel_hint: 'Cancel this vote!' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <div style="margin-left: -2.5%">
+      <button type="button" class="btn btn-sm btn-amber" id="showHideButton" onclick="showOrHideContent()">Ver contenido</button>
+  </div>
+  <div id="content" class="d-none">
+      <% if(@catalog.empty?) %>
+        <h5>No hay contenido en el catalogo.</h5>
+      <% else %>
+        <table id="content-table" class="table">
+        <thead class="black white-text">
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th colspan="2">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @catalog.movies.each do |movie| %>
+                <tr>
+                  <td><%= movie.title %></td>
+                  <td>Pelicula</td>
+                  <td><%= link_to 'Ver', movie, class: 'btn btn-success' %></td>
+                  <% if can? :update, @catalog %>
+                      <td><%= link_to 'Sacar de catalogo', '#', class: 'btn btn-danger', onclick: 'removeContentFromCatalog('+movie.id.to_s+','+@catalog.id.to_s+', '"'Movie'"')' %></td>
+                  <% end %>
+                </tr>
+            <% end %>
+
+            <% @catalog.music_discs.each do |md| %>
+                <tr>
+                  <td><%= md.title %></td>
+                  <td>Disco</td>
+                  <td><%= link_to 'Ver', md, class: 'btn btn-success' %></td>
+                  <% if can? :update, @catalog %>
+                      <td><%= link_to 'Sacar de catalogo', '#', class: 'btn btn-danger', onclick: 'removeContentFromCatalog('+md.id.to_s+','+@catalog.id.to_s+', '"'MusicDisc'"')' %></td>
+                  <% end %>
+                </tr>
+            <% end %>
+
+            <% @catalog.books.each do |book| %>
+                <tr>
+                  <td><%= book.title %></td>
+                  <td>Libro</td>
+                  <td><%= link_to 'Ver', book, class: 'btn btn-success' %></td>
+                  <% if can? :update, @catalog %>
+                      <td><%= link_to 'Sacar de catalogo', '#', class: 'btn btn-danger', onclick: 'removeContentFromCatalog('+book.id.to_s+','+@catalog.id.to_s+', '"'Book'"')' %></td>
+                  <% end %>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+</div>
+<% end %>

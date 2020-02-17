@@ -1,0 +1,28 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag  'sidebar', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<% content_for :sidebar do %>
+<div id="sidebar" role="navigation">
+    <div class="jumbotron">
+      <h3>Catalogos</h3>   
+      <div class="list-group">
+            <%= link_to "Todos los catalogos", catalogs_path, class: "list-group-item " %>
+            <%= link_to "Mis catalogos", "/catalogs/owns/all", class: "list-group-item"%>
+            <%= link_to "Nuevo catalogo", new_catalog_path, class: "list-group-item active" %>
+            <%= link_to "Categorias", catalog_categories_path, class: "list-group-item" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :content do %>
+<div class="col-lg-6 offset-lg-3">
+    <div class="alert alert-warning" role="alert">
+      Aviso! Si el catalogo es "Privado", solo tu podras verlo.
+      El mismo no podra ser valorado.
+    </div>
+    <%= render 'form', catalog: @catalog %>
+</div><br>
+
+<% end %>

@@ -1,0 +1,6 @@
+<%= simple_form_for @catalog_category, html: { class: 'text-center border border-light p-5' }  do | f | %>
+  <p class="h4 mb-4">Nueva categoria</p>
+  <%= f.input :name, label: 'Nombre', error: 'Ingrese el nombre de la categoria.' %>
+
+  <%= f.button :submit, 'Enviar', class: 'btn-catalog' %>
+<% end %>

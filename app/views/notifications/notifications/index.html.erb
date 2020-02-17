@@ -1,0 +1,24 @@
+<% content_for :content do %>
+    <div class="notifications row">
+  <div class="heading clearfix">
+    Notificaciones
+
+    <span class="pull-xs-right">
+      <%= link_to "Vaciar notificaciones", notifications.clean_notifications_path, class: 'btn btn-sm btn-secondary', method: 'delete' %>
+    </span>
+  </div>
+  <div class="list">
+    <% if @notifications.blank? %>
+      <div class="no-records">No hay notificaciones</div>
+    <% else %>
+      <% @notification_groups.each do |group, notifications| %>
+        <div class="notification-group">
+          <div class="group-title"><%= group %></div>
+          <%= render notifications %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= paginate @notifications %>
+</div>
+<% end %> %>

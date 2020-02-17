@@ -1,0 +1,2 @@
+module MusicDiscsHelper
+end

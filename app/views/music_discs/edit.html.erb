@@ -1,0 +1,22 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag  'sidebar', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<% content_for :sidebar do %>
+<div id="sidebar" role="navigation">
+    <div class="jumbotron">
+      <h3>Discos musicales</h3>   
+      <div class="list-group">
+            <%= link_to "Todos los discos", music_discs_path, class: "list-group-item" %>
+            <%= link_to "Nuevo disco", new_music_disc_path, class: "list-group-item" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :content do %>
+    <div class="col-lg-6 offset-lg-3">
+        <%= render 'form', music_disc: @music_disc %>
+    </div><br>
+
+<% end %>

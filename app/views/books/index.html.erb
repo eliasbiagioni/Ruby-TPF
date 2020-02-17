@@ -1,0 +1,44 @@
+<% content_for :sidebar do %>
+  <div id="sidebar" role="navigation">
+    <div class="jumbotron">
+      <h3>Libros</h3>   
+      <div class="list-group">
+            <%= link_to "Todas los libros", books_path, class: "list-group-item active" %>
+            <%= link_to "Nuevo libro", new_book_path, class: "list-group-item " %>
+            <%= link_to "Categorias", book_categories_path, class: "list-group-item" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :content do %>
+  <h2>Libros</h2>
+  
+  <table class="table">
+    <thead class="black white-text">
+      <tr>
+        <th>Titulo</th>
+        <th>Isbn</th>
+        <th colspan="3">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @books.each do |book| %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.isbn %></td>
+          <% if can? :read, book %>
+            <td><%= link_to 'Ver', book, class: 'btn btn-success' %></td>
+          <% end %>
+          <% if can? :update, book %>
+            <td><%= link_to 'Editar', edit_movie_path(book), class: 'btn btn-success' %></td>
+          <% end %>
+          <% if can? :destroy, book %>
+            <td><%= link_to 'Eliminar', book, method: :delete, class: 'btn btn-danger',data: { confirm: 'La pelicula se eliminara, desea continuar?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>

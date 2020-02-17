@@ -1,0 +1,11 @@
+<% content_for :content do %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @catalog_category.name %>
+</p>
+
+<%= link_to 'Edit', edit_catalog_category_path(@catalog_category) %> |
+<%= link_to 'Back', catalog_categories_path %>
+<% end %>

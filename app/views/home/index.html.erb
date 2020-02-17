@@ -1,0 +1,27 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag  'login', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<% content_for :content do %>
+<div class="container ">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+        <div class="card card-signin my-5 card-border-color">
+          <div class="card-body">
+            <h5 class="card-title text-center">LOGIN</h5>
+            <form class="form-signin">
+              <hr class="my-4" style="background-color: #f0ad4e !important;">
+              <%= link_to "Facebook","auth/facebook", class: 'facebook btn btn-lg btn-google btn-block text-uppercase' %>
+              <br>
+              <%= link_to "Twitter", "auth/twitter", class: "twitter btn btn-lg btn-facebook btn-block text-uppercase" %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+  <!--<% flash.each do |key, value| %>
+    <div class="alert alert-info"><%= value %></div>
+  <% end %>-->

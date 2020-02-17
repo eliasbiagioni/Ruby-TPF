@@ -1,0 +1,82 @@
+<% content_for :css do %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<% end %>
+
+<% content_for :sidebar do %>
+  <div id="sidebar" role="navigation">
+    <div class="jumbotron">
+      <h3>Discos musicales</h3>   
+      <div class="list-group">
+        <% if can? :update, @music_disc %>
+            <%= link_to 'Editar', edit_music_disc_path(@music_disc), class: "list-group-item " %> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :content do %>
+<div>
+    <div class="container jumbotron single-catalog-container"> 
+        <div style="margin-left: -15px !important">
+            <p class="catalog-title">
+                <%= @music_disc.title %>
+            </p>
+        </div>
+      <div class="row">
+        <%= image_tag(@music_disc.image, width: 300, height: 400) %>
+        <div class="single-catalog">
+    
+          <div class="d-flex justify-content-start categories_container ">
+              <% @music_disc.music_categories.each do | category | %>
+                <div class="category_container">
+                    <p class="movie_category"><%= category.name %></p>
+                </div>
+              <% end %>
+          </div>
+          <div class="container actors_directors_container">
+            <div>
+              <h4>Discografica</h4>
+              <p><%= @music_disc.discography %></p>
+            </div>
+            <div>
+              <h4>Nombre del grupo</h4>
+              <p><%= @music_disc.group_name %></p>
+            </div>
+          </div>
+    
+      </div>
+    </div>
+    <div style="margin-left: -2.5%">
+      <button type="button" id="showHideButton" class="btn btn-sm btn-amber" onclick="showOrHide()">Ver canciones</button>
+    </div>
+    <table id="songs" class="table d-none">
+        <thead class="black white-text">
+          <tr>
+            <th>Nombre</th>
+            <th>Estilo</th>
+            <% if can? :update, @music_disc %>
+              <th colspan="1">Agregar/Eliminar</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+            <% @music_disc.music_categories.each do |category| %>
+              <% category.songs.each do | song | %>
+                <tr>
+                  <td><%= song.title %></td>
+                  <td><%= song.music_category.name %></td>
+                  <% if can? :update, @music_disc %>
+                    <% if !@music_disc.songs.include?(song) %>
+                      <td><%= link_to 'Agregar', music_disc_add_song_path(@music_disc,song), class: 'btn btn-success' %></td>
+                    <% else %>
+                      <td><%= link_to 'Eliminar', music_disc_remove_song_path(@music_disc,song), class: 'btn btn-danger' %></td>
+                    <% end %>
+                  <% end %>
+                </tr>
+              <% end %>
+          <% end %>
+        </tbody>
+      </table>
+
+<% end %>

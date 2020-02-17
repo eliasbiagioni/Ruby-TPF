@@ -1,0 +1,23 @@
+.facebook{
+  background-color: #385898 !important;
+  color: white !important;
+}
+
+.twitter{
+  background-color: #1da1f2 !important;
+  color: white !important;
+}
+
+.twitter:hover{
+  background-color: #1c94e0 !important;
+  color: white !important;
+}
+
+.facebook:hover{
+  background-color: #4574d1 !important;
+}
+
+.card-border-color{
+  border-width: 450px;
+  border-color: #f0ad4e !important;
+}

@@ -1,0 +1,28 @@
+// Place all the styles related to the Movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table td{
+    vertical-align: middle !important;
+}
+
+.categories_container{
+    height: 10%;
+}
+
+.category_container{
+    border: 1px solid black;
+    vertical-align: middle;
+    margin-left: 7%;
+    background-color: black;
+}
+
+.movie_category{
+    margin-top: 20%;
+    text-transform: uppercase;
+    color: white;
+}
+
+.actors_directors_container{
+    margin-top: 7%;
+}

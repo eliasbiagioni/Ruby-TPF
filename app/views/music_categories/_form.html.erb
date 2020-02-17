@@ -1,0 +1,6 @@
+<%= simple_form_for @music_category, html: { class: 'text-center border border-light p-5' }  do | f | %>
+  <p class="h4 mb-4">Nuevo estilo</p>
+  <%= f.input :name, label: 'Nombre', error: 'Ingrese el nombre del estilo musical.' %>
+
+  <%= f.button :submit, 'Enviar', class: 'btn-catalog' %>
+<% end %>

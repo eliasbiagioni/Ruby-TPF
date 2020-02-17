@@ -1,0 +1,10 @@
+<%= simple_form_for @movie, html: { class: 'text-center border border-light p-5' }  do | f | %>
+  <p class="h4 mb-4">Pelicula</p>
+  <%= f.input :title, label: 'Titulo', error: 'Ingrese el titulo de la pelicula.' %>
+  <%= f.association :movie_categories, label: 'Categoria', as: :select, error: 'Selecciona, al menos, una categoria' %>
+  <%= f.input :directors, label: 'Directores', error: 'Ingrese los directores de la pelicula.' %>
+  <%= f.input :actors, label: 'Actores', error: 'Ingrese los actores de la pelicula.' %>
+  <%= f.input :image, label: 'Selecciona una imagen', error: 'Selecciona una imagen' %>
+
+  <%= f.button :submit, 'Guardar', class: 'btn-catalog' %>
+<% end %>

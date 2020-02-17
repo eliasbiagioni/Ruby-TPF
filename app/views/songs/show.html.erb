@@ -1,0 +1,30 @@
+<% content_for :css do %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<% end %>
+
+<% content_for :sidebar do %>
+  <div id="sidebar" role="navigation">
+    <div class="jumbotron">
+      <h3>Canciones</h3>   
+      <div class="list-group">
+            <%= link_to 'Editar', edit_song_path(@song), class: "list-group-item " %> 
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :content do %>
+<div>
+    <div class="container jumbotron single-catalog-container"> 
+        <div style="margin-left: -15px !important">
+            <p class="catalog-title">
+                <%= @song.title %> - <%= @song.music_category.name %>
+            </p>
+        </div>
+      <div class="row">
+       <div style="margin-left: -0.5%">
+          <button type="button" class="btn btn-sm btn-amber">Ver discos</button>
+        </div>
+      </div>
+    </div>
+<% end %>

@@ -1,0 +1,44 @@
+<% content_for :sidebar do %>
+  <div id="sidebar" role="navigation">
+    <div class="jumbotron">
+      <h3>Canciones</h3>   
+      <div class="list-group">
+            <%= link_to "Todas las canciones", songs_path, class: "list-group-item active" %>
+            <%= link_to "Nueva cancion", new_song_path, class: "list-group-item " %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :content do %>
+  <h2>Canciones</h2>
+  
+  <table class="table">
+    <thead class="black white-text">
+      <tr>
+        <th>Titulo</th>
+        <th>Estilo</th>
+        <th colspan="2">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @songs.each do |song| %>
+        <tr>
+          <td><%= song.title %></td>
+          <td><%= song.music_category.name %></td>
+          <td>
+            <% if can? :update, song %>
+              <%= link_to 'Editar', edit_song_path(song), class: 'btn btn-success' %>
+            <% end %>
+          </td>
+          <td>
+            <% if can? :destroy, song %>
+              <%= link_to 'Eliminar', song, method: :delete, class: 'btn btn-danger',data: { confirm: 'La cancion se eliminara, desea continuar?' } %>
+            <% end %>
+          </td>  
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>

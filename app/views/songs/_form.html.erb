@@ -1,0 +1,7 @@
+<%= simple_form_for @song, html: { class: 'text-center border border-light p-5' }  do | f | %>
+  <p class="h4 mb-4">Cancion</p>
+  <%= f.input :title, label: 'Titulo', error: 'Ingrese el titulo de la cancion.' %>
+  <%= f.association :music_category, label: 'Estilo musical', as: :select, error: 'Selecciona un estilo musical' %>
+
+  <%= f.button :submit, 'Guardar', class: 'btn-catalog' %>
+<% end %>
